@@ -53,6 +53,8 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
     let codeChefStats = null;
     let totalSubmissions = 0;
     let overallMaxStreak = 0;
+    let overallCurrentStreak = 0;
+    let overallTotalActiveDays = 0;
 
     // Timestamp to count map
     const aggregatedCalendar: { [timestamp: string]: number } = {};
@@ -61,8 +63,8 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
       // Extract platforms specific stats
       if (p.platform === "leetcode") {
         leetCodeStats = {
-          rating: p.userStats?.currentRating || 0,
-          highestRating: p.userStats?.highestRating || 0,
+          rating: p.userStats?.currentRating || p.userStats?.maxRating || 0,
+          highestRating: p.userStats?.maxRating || 0,
           totalQuestions: p.totalQuestionStats?.totalQuestionCounts || 0,
           easy: p.totalQuestionStats?.easyQuestionCounts || 0,
           medium: p.totalQuestionStats?.mediumQuestionCounts || 0,
@@ -71,8 +73,8 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
       } else if (p.platform === "codechef") {
         codeChefStats = {
           rating: p.userStats?.currentRating || 0,
-          highestRating: p.userStats?.highestRating || 0,
-          stars: p.userStats?.displayStars || "",
+          highestRating: p.userStats?.maxRating || 0,
+          stars: p.userStats?.stars ? `${p.userStats.stars}` : "",
           totalQuestions: p.totalQuestionStats?.totalQuestionCounts || 0,
         };
       }
@@ -81,8 +83,21 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
       totalSubmissions += p.totalQuestionStats?.totalQuestionCounts || 0;
 
       // Aggregate Max Streak
-      if (p.dailyActivityStatsResponse?.maxStreak > overallMaxStreak) {
-        overallMaxStreak = p.dailyActivityStatsResponse.maxStreak;
+      const maxStreak = p.dailyActivityStatsResponse?.maxStreak;
+      if (maxStreak && maxStreak > overallMaxStreak) {
+        overallMaxStreak = maxStreak;
+      }
+
+      // Aggregate Current Streak (from platforms that provide it)
+      const currentStreak = p.dailyActivityStatsResponse?.currentStreak;
+      if (currentStreak && currentStreak > overallCurrentStreak) {
+        overallCurrentStreak = currentStreak;
+      }
+
+      // Aggregate Total Active Days (from platforms that provide it)
+      const totalActiveDays = p.dailyActivityStatsResponse?.totalActiveDays;
+      if (totalActiveDays && totalActiveDays > overallTotalActiveDays) {
+        overallTotalActiveDays = totalActiveDays;
       }
 
       // Aggregate Calendar
@@ -107,12 +122,15 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
     // Sort by date just to be clean
     heatmapData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
+    // If totalActiveDays not provided by API, count unique days from calendar
+    const activeDaysCount = overallTotalActiveDays || Object.keys(aggregatedCalendar).length;
+
     return {
       heatmapData,
       stats: {
         maxStreak: overallMaxStreak,
-        currentStreak: platforms[0]?.dailyActivityStatsResponse?.currentStreak || 0, // Approx, exact cross-platform current streak is hard to calculate from separate calendars
-        totalActiveDays: Object.keys(aggregatedCalendar).length,
+        currentStreak: overallCurrentStreak,
+        totalActiveDays: activeDaysCount,
         totalSubmissions: totalSubmissions,
       },
       leetCodeStats,
@@ -123,6 +141,7 @@ const parseCodolioPayload = (payload: any): { heatmapData: HeatmapDay[]; stats: 
     return null;
   }
 };
+
 
 const CodolioActivitySection = () => {
   const ref = useRef(null);
