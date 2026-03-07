@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    /* Custom neon colors */
+    --neon-purple: 262 83% 58%;
+    --neon-blue: 217 91% 60%;
+    --neon-pink: 330 100% 65%;
+    --neon-cyan: 180 100% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(217, 91%, 60%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(262, 83%, 58%, 0.5) 0%, hsl(217, 91%, 60%, 0.5) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(262, 83%, 70%) 0%, hsl(217, 91%, 70%) 50%, hsl(330, 100%, 70%) 100%);
+    
+    /* Shadows */
+    --shadow-neon: 0 0 20px hsl(262, 83%, 58%, 0.5), 0 0 40px hsl(262, 83%, 58%, 0.3);
+    --shadow-neon-blue: 0 0 20px hsl(217, 91%, 60%, 0.5), 0 0 40px hsl(217, 91%, 60%, 0.3);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .gradient-bg {
+    background-image: var(--gradient-primary);
+  }
+
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .neon-glow-blue {
+    box-shadow: var(--shadow-neon-blue);
+  }
+
+  .card-glow {
+    @apply transition-all duration-300;
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 0 30px hsl(262, 83%, 58%, 0.3), 0 0 60px hsl(262, 83%, 58%, 0.1);
+  }
+
+  .skill-card {
+    @apply bg-card/30 backdrop-blur-md border border-border/40 rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-pointer;
+  }
+
+  .skill-card:hover {
+    @apply border-primary;
+    box-shadow: 0 0 20px hsl(262, 83%, 58%, 0.4), 0 0 40px hsl(262, 83%, 58%, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4;
+  }
+
+  .glass-card {
+    @apply bg-card/20 backdrop-blur-2xl border border-border/30 rounded-2xl;
+  }
+
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply gradient-bg text-primary-foreground font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105;
+    box-shadow: var(--shadow-neon);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px hsl(262, 83%, 58%, 0.6), 0 0 60px hsl(262, 83%, 58%, 0.4);
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105;
+  }
+
+  .project-card {
+    @apply glass-card p-6 transition-all duration-500;
+  }
+
+  .project-card:hover {
+    @apply border-primary/50;
+    box-shadow: 0 0 30px hsl(262, 83%, 58%, 0.2);
+    transform: translateY(-8px);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 5%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(262, 83%, 40%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(262, 83%, 50%);
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(262, 83%, 58%, 0.5);
+  color: white;
+}
