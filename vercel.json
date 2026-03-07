@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd vishal-s-dev-den-main && npm run build",
+  "outputDirectory": "vishal-s-dev-den-main/dist",
+  "installCommand": "cd vishal-s-dev-den-main && npm install"
+}
