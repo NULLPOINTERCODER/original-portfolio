@@ -29,6 +29,58 @@ const projects = [
     glowColor: "rgba(217,70,239,0.3)",
     emoji: "🎬",
   },
+  {
+    title: "Wanderlust – Airbnb Clone",
+    description:
+      "Developed a full-stack Airbnb-inspired web application using Node.js, Express.js, MongoDB, Mongoose, and EJS. Implemented user authentication with Passport.js, image upload using Multer and Cloudinary, and CRUD operations for property listings including create, edit, delete, and booking-style functionality. Designed a responsive and user-friendly interface for seamless property management and browsing.",
+    techStack: ["Node.js", "Express.js", "MongoDB", "Mongoose", "EJS", "Passport.js", "Multer", "Cloudinary"],
+    github: "https://github.com/NULLPOINTERCODER/local-connect.git",
+    live: "https://local-connect-blue.vercel.app/",
+    date: "2025",
+    gradient: "from-emerald-500/20 to-teal-900/10",
+    borderColor: "border-emerald-500/30",
+    glowColor: "rgba(16,185,129,0.3)",
+    emoji: "🏡",
+  },
+  {
+    title: "ContractConnect – Labour Job Platform",
+    description:
+      "Developed during the Trojan_Coders Hackathon. A platform connecting daily wage labourers with employers across India via location-based job matching. Planned features include AI job matching, SMS/Email notifications, in-app messaging, payment integration, skill development modules, and a community forum. Designed for non-smartphone users with SMS and IVR support.",
+    techStack: ["React", "Next.js", "Node.js", "Express", "Flask", "PostgreSQL", "MongoDB", "SQLite"],
+    github: "https://github.com/NULLPOINTERCODER/contractconnect.git",
+    live: "",
+    date: "Hackathon 2025",
+    gradient: "from-amber-500/20 to-orange-900/10",
+    borderColor: "border-amber-500/30",
+    glowColor: "rgba(245,158,11,0.3)",
+    emoji: "🔨",
+  },
+  {
+    title: "Credit Card Fraud Detection System",
+    description:
+      "Built a fraud detection system using Random Forest with RandomizedSearchCV for hyperparameter tuning. Handled class imbalance using SMOTE (imbalanced-learn). Achieved ~99.96% accuracy and ~0.9545 ROC-AUC on real-world transaction data. Exported the trained model as a .pkl file for deployment.",
+    techStack: ["Python", "Scikit-learn", "Pandas", "NumPy", "imbalanced-learn", "SMOTE", "Random Forest", "Pickle"],
+    github: "https://github.com/NULLPOINTERCODER/creadit-card-fraud-detection-system.git",
+    live: "",
+    date: "2025",
+    gradient: "from-red-500/20 to-rose-900/10",
+    borderColor: "border-red-500/30",
+    glowColor: "rgba(239,68,68,0.3)",
+    emoji: "🛡️",
+  },
+  {
+    title: "Mail Spam Detection System",
+    description:
+      "Built a machine learning-based email spam classifier that accurately distinguishes spam from legitimate messages. Trained on real-world email datasets with NLP preprocessing techniques including TF-IDF vectorization. Deployed as an interactive web app for real-time spam prediction.",
+    techStack: ["Python", "Scikit-learn", "NLP", "TF-IDF", "Pandas", "NumPy", "Streamlit"],
+    github: "https://github.com/NULLPOINTERCODER/Mail-spam-classifier.git",
+    live: "https://mail-spam-classifier.vercel.app",
+    date: "2025",
+    gradient: "from-cyan-500/20 to-sky-900/10",
+    borderColor: "border-cyan-500/30",
+    glowColor: "rgba(6,182,212,0.3)",
+    emoji: "📧",
+  },
 ];
 
 const ProjectsSection = () => {
