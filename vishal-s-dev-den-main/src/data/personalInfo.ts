@@ -160,6 +160,13 @@ export const personalInfo: PersonalInfo = {
   ],
   certifications: [
     {
+      title: "Building Agentic AI Applications with Large Language Models",
+      issuer: "NVIDIA",
+      date: "Sep 2026",
+      description: "Certificate of Competency awarded by Howard Wright (Vice President, NVIDIA) for demonstrating competence in building autonomous Agentic AI applications using LLMs.",
+      link: "https://learn.nvidia.com/certificates?id=kiP-BDBuSaye11OPrF4KWg"
+    },
+    {
       title: "Machine Learning, Data Science, DL and NLP",
       issuer: "Udemy",
       date: "Jan 2026",
@@ -248,8 +255,8 @@ export const personalInfo: PersonalInfo = {
       answer: "Vishal has a strong passion for competitive programming and DSA in Java and C++:\n• **LeetCode Rating:** 1720\n• **CodeChef Rating:** 1177\n• **Problems Solved:** 450+ problems solved across various coding platforms\n• **Smart Coder Silver Certificate** from Smart Interviews"
     },
     {
-      questions: ["certifications", "certificates", "courses"],
-      answer: "Vishal holds several industry certifications:\n• **Machine Learning, Data Science, DL and NLP** (Udemy - Jan 2026)\n• **AWS Academy Cloud Foundations Graduate** (AWS / Credly - Aug 2025)\n• **Smart Coder – Silver Certificate** (Smart Interviews - July 2025)\n• **Artificial Intelligence Fundamentals** (IBM SkillsBuilder - July 2025)\n• **Computer Networks and IP** (NPTEL - July 2025)"
+      questions: ["certifications", "certificates", "courses", "nvidia"],
+      answer: "Vishal holds several top industry certifications:\n• **Building Agentic AI Applications with LLMs** (NVIDIA - Sep 2026)\n• **Machine Learning, Data Science, DL and NLP** (Udemy - Jan 2026)\n• **AWS Academy Cloud Foundations Graduate** (AWS / Credly - Aug 2025)\n• **Smart Coder – Silver Certificate** (Smart Interviews - July 2025)\n• **Artificial Intelligence Fundamentals** (IBM SkillsBuilder - July 2025)\n• **Computer Networks and IP** (NPTEL - July 2025)"
     },
     {
       questions: ["achievements", "hackathons", "awards", "recognition"],

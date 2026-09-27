@@ -4,6 +4,18 @@ import { Award, ExternalLink, ChevronLeft, ChevronRight, Calendar, Building } fr
 
 const certifications = [
   {
+    title: "Building Agentic AI Applications with Large Language Models",
+    issuer: "NVIDIA",
+    date: "Sep 2026",
+    description: "Certificate of Competency awarded by Howard Wright (Vice President, NVIDIA) for demonstrating competence in designing and building autonomous Agentic AI applications using LLMs.",
+    link: "https://learn.nvidia.com/certificates?id=kiP-BDBuSaye11OPrF4KWg",
+    emoji: "⚡",
+    gradient: "from-emerald-500/20 to-green-900/10",
+    glow: "rgba(118,185,0,0.35)",
+    border: "border-emerald-500/40",
+    badge: "#76B900",
+  },
+  {
     title: "Machine Learning, Data Science, DL and NLP",
     issuer: "Udemy",
     date: "Jan 2026",
