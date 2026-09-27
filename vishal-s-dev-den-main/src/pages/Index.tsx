@@ -11,6 +11,7 @@ import CodolioActivitySection from "@/components/CodolioActivitySection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import PortfolioAIChatbot from "@/components/PortfolioAIChatbot";
 
 const Index = () => {
   return (
@@ -29,6 +30,7 @@ const Index = () => {
         <CodolioActivitySection />
         <ContactSection />
         <Footer />
+        <PortfolioAIChatbot />
       </div>
     </main>
   );
